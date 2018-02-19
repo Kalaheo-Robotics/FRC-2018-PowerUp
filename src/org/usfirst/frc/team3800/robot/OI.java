@@ -21,8 +21,8 @@ public class OI {
 	//// joystick.
 	// You create one by telling it which joystick it's on and which button
 	// number it is.
-	Joystick stickr = new Joystick(1);
-	Joystick stickl = new Joystick(2);
+	public Joystick stickr = new Joystick(1);
+	public Joystick stickl = new Joystick(0);
 	// Button button = new JoystickButton(stick, buttonNumber);
 	Button liftUp = new JoystickButton(stickl, 3); 
 	Button liftDown = new JoystickButton(stickl, 2);

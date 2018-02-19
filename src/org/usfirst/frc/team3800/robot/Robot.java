@@ -13,9 +13,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team3800.robot.commands.ExampleCommand;
+import org.usfirst.frc.team3800.robot.commands.CommandBase;
 import org.usfirst.frc.team3800.robot.subsystems.Drivetrain;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
+import org.usfirst.frc.team3800.robot.OI;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -36,7 +37,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		_pdp = new PowerDistributionPanel();
-		m_chooser.addDefault("Default Auto", new ExampleCommand());
+		m_chooser.addDefault("Default Auto", new CommandBase());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 	}
@@ -97,6 +98,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
+
 		Scheduler.getInstance().run();
 	}
 
@@ -110,6 +112,10 @@ public class Robot extends TimedRobot {
 			autonomousCommand.cancel();
 		}
 		
+		
+		//Drivetrain.setMecanum(oi.stickl.getX(), oi.stickl.getY(), oi.stickr.getX(),Drivetrain.getgyroval());
+		
+		
 	}
 
 	/**
@@ -118,6 +124,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		//Drivetrain.setMecanum(oi.stickl.getX(), oi.stickl.getY(), oi.stickr.getX(),0);
 	}
 
 	/**
@@ -125,5 +132,6 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void testPeriodic() {
+		//Drivetrain.setMecanum(oi.stickl.getX(), oi.stickl.getY(), oi.stickr.getX(),0);
 	}
 }

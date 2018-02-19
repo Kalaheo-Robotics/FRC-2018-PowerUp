@@ -8,25 +8,32 @@
 package org.usfirst.frc.team3800.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc.team3800.robot.Robot;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+
+import org.usfirst.frc.team3800.robot.*;
+import org.usfirst.frc.team3800.robot.subsystems.Drivetrain;
 
 /**
  * An example command.  You can replace me with your own command.
  */
-public class ExampleCommand extends Command {
-	public ExampleCommand() {
+public class CommandBase extends Command {
+	public static OI oi;
+	public CommandBase() {
 		// Use requires() here to declare subsystem dependencies
-		requires(Robot.);
+		//requires(drivetrain);
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
+		
+		oi = new OI();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
+		Drivetrain.setMecanum(oi.stickl.getX(), oi.stickl.getY(), oi.stickr.getX(),Drivetrain.getgyroval());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

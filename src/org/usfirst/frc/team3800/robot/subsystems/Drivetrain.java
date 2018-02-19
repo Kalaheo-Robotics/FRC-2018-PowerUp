@@ -23,14 +23,14 @@ import com.ctre.phoenix.motorcontrol.can.*;
  */
 public class Drivetrain extends Subsystem {
 	
-    WPI_TalonSRX _leftFrontMotor;
-	WPI_TalonSRX _leftBackMotor;
-	WPI_TalonSRX _rightFrontMotor;
-	WPI_TalonSRX _rightBackMotor;
+	private WPI_TalonSRX _leftFrontMotor;
+	private WPI_TalonSRX _leftBackMotor;
+	private WPI_TalonSRX _rightFrontMotor;
+	private WPI_TalonSRX _rightBackMotor;
     
-    private MecanumDrive _drive;
+    private static MecanumDrive _drive;
     
-    private ADXRS450_Gyro gyro;
+    private static ADXRS450_Gyro gyro;
  
 	public void init() {
 	    _leftFrontMotor = new WPI_TalonSRX(RobotMap.leftFrontMotor);
@@ -43,9 +43,13 @@ public class Drivetrain extends Subsystem {
 	    _drive = new MecanumDrive(_leftFrontMotor, _leftBackMotor, _rightFrontMotor, _rightBackMotor);
 	}
 
-	public void setMecanum(double x, double y, double rot, double gyro) {
+	public static void setMecanum(double x, double y, double rot, double gyro) {
         _drive.driveCartesian(x, y, rot, gyro);
     }
+	
+	public static double getgyroval() {
+		return(gyro.getAngle());
+	}
 	
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.

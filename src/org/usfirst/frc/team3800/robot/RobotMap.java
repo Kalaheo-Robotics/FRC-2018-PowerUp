@@ -21,12 +21,12 @@ public class RobotMap {
 	public static int rightBackMotor = 4;
 
 	// Intake
-	public static int leftIntakeMotor = 5;
-	public static int rightIntakeMotor = 6;
+	//public static int leftIntakeMotor = 5;
+	//public static int rightIntakeMotor = 6;
 	
 	// Lift
-	public static int leftLiftMotor = 3;
-	public static int rightLiftMotor = 4;
+	//public static int leftLiftMotor = 3;
+	//public static int rightLiftMotor = 4;
 	
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:
