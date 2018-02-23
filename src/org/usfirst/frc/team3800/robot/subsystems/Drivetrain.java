@@ -23,16 +23,16 @@ import com.ctre.phoenix.motorcontrol.can.*;
  */
 public class Drivetrain extends Subsystem {
 	
-	private WPI_TalonSRX _leftFrontMotor;
-	private WPI_TalonSRX _leftBackMotor;
-	private WPI_TalonSRX _rightFrontMotor;
-	private WPI_TalonSRX _rightBackMotor;
+	private static WPI_TalonSRX _leftFrontMotor;
+	private static WPI_TalonSRX _leftBackMotor;
+	private static WPI_TalonSRX _rightFrontMotor;
+	private static WPI_TalonSRX _rightBackMotor;
     
     private static MecanumDrive _drive;
     
     private static ADXRS450_Gyro gyro;
  
-	public void init() {
+	public static void init() {
 	    _leftFrontMotor = new WPI_TalonSRX(RobotMap.leftFrontMotor);
 	    _leftBackMotor = new WPI_TalonSRX(RobotMap.leftBackMotor);
 	    _rightFrontMotor = new WPI_TalonSRX(RobotMap.rightFrontMotor);

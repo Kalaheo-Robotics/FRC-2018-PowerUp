@@ -29,6 +29,7 @@ public class Robot extends TimedRobot {
 	PowerDistributionPanel _pdp;
 	Command autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
+	public static OI oi;
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -36,6 +37,8 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {
+		Drivetrain.init();
+		oi = new OI();
 		_pdp = new PowerDistributionPanel();
 		m_chooser.addDefault("Default Auto", new CommandBase());
 		// chooser.addObject("My Auto", new MyAutoCommand());
@@ -99,7 +102,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousPeriodic() {
 
-		Scheduler.getInstance().run();
+		//Scheduler.getInstance().run();
 	}
 
 	@Override
@@ -113,9 +116,6 @@ public class Robot extends TimedRobot {
 		}
 		
 		
-		//Drivetrain.setMecanum(oi.stickl.getX(), oi.stickl.getY(), oi.stickr.getX(),Drivetrain.getgyroval());
-		
-		
 	}
 
 	/**
@@ -123,8 +123,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		Scheduler.getInstance().run();
-		//Drivetrain.setMecanum(oi.stickl.getX(), oi.stickl.getY(), oi.stickr.getX(),0);
+		Drivetrain.setMecanum(oi.stickl.getX(), oi.stickl.getY(), oi.stickr.getX(),0);
 	}
 
 	/**
